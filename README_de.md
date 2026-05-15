@@ -29,10 +29,52 @@ Das Theme wird mit dem o3-Shop System mit jedem neuen Release aktualisiert.
 
 #### Step 2: Copy Assets to Out Directory
 
-
 ```bash
 cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/build <DOCUMENT_ROOT>/source/Application/views/<THEME_NAME>
 cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/package.json <DOCUMENT_ROOT>/source/Application/views/<THEME_NAME>
+```
+#### Erstellung eines Child-Themes
+
+1. Views Ordner anlegen und Dateien kopieren
+
+```bash
+mkdir <DOCUMENT_ROOT>/source/Application/views/<THEME_NAME>
+cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/* <DOCUMENT_ROOT>/source/Application/views/<THEME_NAME>
+```
+
+2. Out Ordner <THEME_NAME> anlegen und Dateien kopieren
+
+```bash
+mkdir <DOCUMENT_ROOT>/source/out/<THEME_NAME>
+cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/out/o3-theme* <DOCUMENT_ROOT>/source/out/<THEME_NAME>
+```
+3. composer.json
+
+```json:
+{ 
+  "name": "o3-shop/child",    
+  "description": "This is a child theme",       
+  "type": "o3shop-theme",    
+  "extra": {   
+  "o3-shop": {   
+     "target-directory": "child"
+     "assets-directory": "out/child",
+      }
+    }
+}
+```
+
+4. theme.php
+```php
+declare(strict_types=1);
+
+$aTheme = [
+    'id' => 'o3-shop-child',
+    'title' => 'CHILD',
+    'description' => 'A child theme from o3-shop.',
+    'parentTheme' => 'o3-shop',
+    'parentVersions' => ['1.1.0','1.3.0'],
+];
 ```
 
 > **Important:**
