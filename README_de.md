@@ -48,23 +48,9 @@ cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/* <DOCUMENT_ROOT>/source/Applicati
 mkdir <DOCUMENT_ROOT>/source/out/<THEME_NAME>
 cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/out/o3-theme* <DOCUMENT_ROOT>/source/out/<THEME_NAME>
 ```
-3. composer.json
 
-```json:
-{ 
-  "name": "o3-shop/child",    
-  "description": "This is a child theme",       
-  "type": "o3shop-theme",    
-  "extra": {   
-  "o3-shop": {   
-     "target-directory": "child"
-     "assets-directory": "out/child",
-      }
-    }
-}
-```
-
-4. theme.php
+3. theme.php
+im root des Childordners eine theme.php ersttellen.
 ```php
 declare(strict_types=1);
 
