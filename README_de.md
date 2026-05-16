@@ -28,7 +28,6 @@ Das Theme wird mit dem o3-Shop System mit jedem neuen Release aktualisiert.
 | Gulp CLI | 3.0.0 | [Download](https://gulpjs.com/) |
 
 #### Build-Dateien für bestehendes Theme kopieren
-
 ```bash
 cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/build <DOCUMENT_ROOT>/source/Application/views/<THEME_NAME>
 cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/package.json <DOCUMENT_ROOT>/source/Application/views/<THEME_NAME>
