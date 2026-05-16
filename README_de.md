@@ -27,7 +27,7 @@ Das Theme wird mit dem o3-Shop System mit jedem neuen Release aktualisiert.
 | npm | 10.x | Included with Node.js |
 | Gulp CLI | 3.0.0 | [Download](https://gulpjs.com/) |
 
-#### Step 2: Copy Assets to Out Directory
+#### Build-Dateien für bestehendes Theme kopieren
 
 ```bash
 cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/build <DOCUMENT_ROOT>/source/Application/views/<THEME_NAME>
@@ -50,7 +50,8 @@ cp -r <DOCUMENT_ROOT>/vendor/o3-shop/o3-theme/out/o3-theme* <DOCUMENT_ROOT>/sour
 ```
 
 3. theme.php
-im root des Childordners eine theme.php ersttellen.
+im root des Childordners eine theme.php erstellen.
+
 ```php
 declare(strict_types=1);
 
