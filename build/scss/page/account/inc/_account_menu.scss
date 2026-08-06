@@ -20,7 +20,7 @@
 
         &.active {
             color: var(--bs-primary);
-            background-color: $secondary;
+            background-color: var(--bs-secondary);
         }
     }
 }

@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    [{block name="captcha_form"}][{/block}]
+    [{block name="captcha_form"}][{if method_exists($oViewConf, 'getCaptchaWidget')}][{$oViewConf->getCaptchaWidget('forgotpwd')}][{/if}][{/block}]
 
     <button class="btn btn-primary" type="submit">[{oxmultilang ident="REQUEST_PASSWORD"}]</button>
 

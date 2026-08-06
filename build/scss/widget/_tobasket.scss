@@ -30,7 +30,7 @@
 .component__tobasket-minus, .component__tobasket-plus {
     width: 52px;
     height: 52px;
-    background-color: $secondary;
+    background-color: var(--bs-secondary);
     padding: 0;
 
     &:disabled {
@@ -38,7 +38,7 @@
         border: none;
 
         svg path {
-            stroke: #D4D4D4;
+            stroke: #888888;
         }
     }
 
@@ -77,4 +77,9 @@
         flex-grow: 1;
         padding: 0 10px;
     }
+}
+
+.component__tobasket[data-tooltip] .component__tobasket-submit {
+    opacity: 0.5;
+    pointer-events: none;
 }

@@ -29,7 +29,7 @@ $aLang = [
     'SHOP_THEME_GROUP_images'                       => 'Bilder',
     'SHOP_THEME_GROUP_features'                     => 'Funktionen',
     'SHOP_THEME_GROUP_display'                      => 'Anzeige',
-    'SHOP_THEME_GROUP_colors'                       => 'Farben',
+    'SHOP_THEME_GROUP_colors'                       => 'Farben & Appearance',
     'SHOP_THEME_GROUP_article'                      => 'Artikel',
     'SHOP_THEME_GROUP_logo'                         => 'Logo',
     'SHOP_THEME_GROUP_favicons'                     => 'Favicons',
@@ -100,19 +100,36 @@ $aLang = [
     'SHOP_THEME_blShowFiltersSearch'                => 'Maximale Anzahl der Filter-Werte (bevor Mehr-Button)',
     'HELP_SHOP_THEME_blShowFiltersSearch'           => 'Wird dieser Wert von der Anzahl an möglichen Filter-Werten überschritten, werden die restlichen Filter-Werte verborgen, können aber durch einen Button darunter aufgeklappt werden. Außerdem wird eine Suche für diesen Filter angezeigt.',
 
-    'SHOP_THEME_blPrimaryColor'                     => 'Primärfarbe',
-    'SHOP_THEME_blSecondaryColor'                   => 'Sekundärfarbe',
-    'SHOP_THEME_blFooterColor'                      => 'Hintergrundfarbe Footer',
+    'SHOP_THEME_sPrimaryColor'                     => 'Primärfarbe',
+    'HELP_SHOP_THEME_sPrimaryColor'                => 'Angabe als HEX-Wert. Bsp.: #950952',
+    'SHOP_THEME_sSecondaryColor'                   => 'Sekundärfarbe',
+    'HELP_SHOP_THEME_sSecondaryColor'              => 'Angabe als HEX-Wert. Bsp.: #FCE8F3',
+    'SHOP_THEME_sAccentColor'                      => 'Akzentfarbe',
+    'HELP_SHOP_THEME_sAccentColor'                 => 'Angabe als HEX-Wert. Bsp.: #FFE6CA',
+    'SHOP_THEME_sFooterColor'                      => 'Hintergrundfarbe Footer',
+    'HELP_SHOP_THEME_sFooterColor'                 => 'Angabe als HEX-Wert. Bsp.: #F2F2F2',
+    'SHOP_THEME_sBackgroundColor'                  => 'Seitenhintergrundfarbe',
+    'HELP_SHOP_THEME_sBackgroundColor'             => 'Angabe als HEX-Wert. Bsp.: #FFF8F0',
+    'SHOP_THEME_sShowBackgroundImage'              => 'Hintergrundbild anzeigen',
+    'HELP_SHOP_THEME_sShowBackgroundImage'         => 'Aktiviert das Hintergrundbild (überschreibt die Seitenhintergrundfarbe).',
+    'SHOP_THEME_sBackgroundImage'                  => 'Hintergrundbild (Dateiname)',
+    'HELP_SHOP_THEME_sBackgroundImage'             => 'Dateiname des Hintergrundbilds im Ordner out/o3-theme/src/img/. Bsp.: hintergrundbild.jpg',
+    'SHOP_THEME_iContentInnerMargin'               => 'Innenabstand Inhalt (px)',
+    'HELP_SHOP_THEME_iContentInnerMargin'          => 'Seitlicher Innenabstand des Inhaltsbereichs in Pixeln. 0 = kein Abstand.',
 
     'SHOP_THEME_iTopNaviCatCount'                   => 'Anzahl der Kategorien, die oben angezeigt werden (weitere Kategorien werden ebenfalls oben unter "mehr" aufgelistet)', //SHOP_CONFIG_TOPNAVICATCOUNT
     'SHOP_THEME_blShowFinalStep'                    => 'Bestellbestätigung anzeigen, wenn die Bestellung abgeschlossen ist (fünfter Bestellschritt)', //SHOP_SYSTEM_SHOWFINALSTEP
     'SHOP_THEME_iNewBasketItemMessage'              => 'Wenn Produkt in den Warenkorb gelegt wird, folgende Aktion ausführen', //SHOP_SYSTEM_SHOWNEWBASKETITEMMESSAGE
-    'HELP_SHOP_THEME_iNewBasketItemMessage'         => 'Wenn Konsumenten ein Produkt in den Warenkorb legen, kann der OXID eShop unterschiedliche Feedback-Aktionen durchführen.', //SHOP_SYSTEM_SHOWNEWBASKETITEMMESSAGE
+    'HELP_SHOP_THEME_iNewBasketItemMessage'         => 'Wenn Kunden ein Produkt in den Warenkorb legen, kann der O3-Shop unterschiedliche Feedback-Aktionen durchführen.', //SHOP_SYSTEM_SHOWNEWBASKETITEMMESSAGE
     'SHOP_THEME_iNewBasketItemMessage_0'            => 'Keine',
     'SHOP_THEME_iNewBasketItemMessage_1'            => 'Meldung ausgeben',
     'SHOP_THEME_iNewBasketItemMessage_2'            => 'Popup öffnen',
     'SHOP_THEME_iNewBasketItemMessage_3'            => 'Warenkorb öffnen',
 
+    'SHOP_THEME_blShowSubcatTiles'                  => 'Unterkategorien als Kacheln anzeigen',
+    'HELP_SHOP_THEME_blShowSubcatTiles'             => 'Zeigt Unterkategorien auf Kategorieseiten als Bildkacheln an. Wenn für eine Kategorie kein Bild hochgeladen wurde, wird stattdessen ein Button angezeigt.',
+    'SHOP_THEME_sEnable3xl'                         => '3XL-Layout aktivieren (≥1720 px, 5 Produkte pro Reihe)',
+    'HELP_SHOP_THEME_sEnable3xl'                    => 'Aktiviert ab einem Viewport von 1720 px einen erweiterten Container (1650 px) mit 5 Produkten pro Reihe in Listenansicht und Produkt-Slidern. Standard: aktiv.',
     'SHOP_THEME_blShowListDisplayType'              => 'Produktlistentyp in Produktlisten anzeigen',
     'HELP_SHOP_THEME_blShowListDisplayType'         => 'Darf der Besucher Ihres Online-Shops die Art der Listenansicht auswählen? Falls diese Option nicht aktiviert ist, werden die Listenansichten so angezeigt wie in der Dropbox "Standard für Produktlistentyp" eingestellt.',
     'SHOP_THEME_sDefaultListDisplayType'            => 'Standard für Produktlistentyp',
@@ -137,16 +154,16 @@ $aLang = [
     'SHOP_THEME_aNrofCatArticles'                   => 'Anzahl der Artikel, die in einer Artikelliste pro Seite angezeigt werden können<br><br>Warnung: Eine große Anzahl von Artikeln pro Seite (über 100) kann die Geschwindigkeit des Shops erheblich beeinflussen!',
 
     'SHOP_THEME_sFacebookUrl'                       => 'Facebook Seiten-URL',
-    'HELP_SHOP_THEME_sFacebookUrl'                  => 'Bsp.: https://www.facebook.com/oxidesales',
+    'HELP_SHOP_THEME_sFacebookUrl'                  => 'Bsp.: https://www.facebook.com/meinshop',
     'SHOP_THEME_sXUrl'                              => 'X (ehemals Twitter) Profil-URL',
-    'HELP_SHOP_THEME_sXUrl'                         => 'Bsp.: https://x.com/OXID_eSales',
+    'HELP_SHOP_THEME_sXUrl'                         => 'Bsp.: https://x.com/meinshop',
     'SHOP_THEME_sYouTubeUrl'                        => 'YouTube Kanal-URL',
-    'HELP_SHOP_THEME_sYouTubeUrl'                   => 'Bsp.: https://www.youtube.com/user/oxidesales‎',
+    'HELP_SHOP_THEME_sYouTubeUrl'                   => 'Bsp.: https://www.youtube.com/user/meinshop',
     'SHOP_THEME_sInstagramUrl'                      => 'Instagram Seiten-URL',
-    'HELP_SHOP_THEME_sInstagramUrl'                 => 'Bsp.: https://www.instagram.com/oxid_esales/',
+    'HELP_SHOP_THEME_sInstagramUrl'                 => 'Bsp.: https://www.instagram.com/meinshop/',
 
     'SHOP_THEME_sGoogleMapsAddr'                    => 'Ihre Adresse',
-    'HELP_SHOP_THEME_sGoogleMapsAddr'               => 'Bsp.: OXID eSales AG, Bertoldstraße 48, 79098 Freiburg‎',
+    'HELP_SHOP_THEME_sGoogleMapsAddr'               => 'Bsp.: Meine Firma GmbH, Musterstraße 1, 12345 Musterstadt',
 
     'SHOP_THEME_bl_showManufacturer'                => 'Hersteller auf Startseite anzeigen‎',
 
@@ -162,7 +179,7 @@ $aLang = [
 
     'SHOP_THEME_sLogoFile'                          => 'Dateiname des Logos im Header',
     'SHOP_THEME_sSloganFile'                        => 'Dateiname des Slogan im Header',
-    'HELP_SHOP_THEME_sLogoFile'                     => 'Relativ zu dem Pfad <code>/out/wave/img/</code>.',
+    'HELP_SHOP_THEME_sLogoFile'                     => 'Relativ zu dem Pfad <code>/out/o3-theme/src/img/</code>.',
 
     'SHOP_THEME_sLogoWidth'                         => 'Breite des Header-Logos',
     'HELP_SHOP_THEME_sLogoWidth'                    => 'Angaben in Pixel.',
@@ -170,10 +187,10 @@ $aLang = [
     'HELP_SHOP_THEME_sLogoHeight'                   => 'Angaben in Pixel.',
 
     'SHOP_THEME_sEmailLogo'                         => 'Dateiname des Logos im E-Mail-Kopf',
-    'HELP_SHOP_THEME_sEmailLogo'                    => 'Relativ zu dem Pfad <code>/out/wave/img/</code>.',
+    'HELP_SHOP_THEME_sEmailLogo'                    => 'Relativ zu dem Pfad <code>/out/o3-theme/src/img/</code>.',
 
     'SHOP_THEME_sFaviconFile'                       => 'Dateiname des Favicons',
-    'HELP_SHOP_THEME_sFaviconFile'                  => 'Hiermit ist das Favicon gemeint, welches im Browser auch beim Tab angezeigt wird.<br>In der Regel handelt es sich hier um eine .ico-Datei.<br>Relativ zu dem Pfad <code>/out/wave/img/favicons/</code>.',
+    'HELP_SHOP_THEME_sFaviconFile'                  => 'Hiermit ist das Favicon gemeint, welches im Browser auch beim Tab angezeigt wird.<br>In der Regel handelt es sich hier um eine .ico-Datei.<br>Relativ zu dem Pfad <code>/out/o3-theme/src/img/favicons/</code>.',
     'SHOP_THEME_sFavicon16File'                     => 'Dateiname des Favicons mit den Maßen 16*16px.',
     'SHOP_THEME_sFavicon32File'                     => 'Dateiname des Favicons mit den Maßen 32*32px.',
     'SHOP_THEME_sFavicon48File'                     => 'Dateiname des Favicons mit den Maßen 48*48px.',
@@ -187,7 +204,7 @@ $aLang = [
     'SHOP_THEME_sBackgroundColor'                   => 'Hintergrundfarbe des Shops',
     'HELP_SHOP_THEME_sBackgroundColor'              => 'Angabe als HEX-Wert.<br>Bsp.: #D83434',
     'SHOP_THEME_sBackgroundPath'                    => 'Dateiname des Hintergrundbildes',
-    'HELP_SHOP_THEME_sBackgroundPath'               => 'Relativ zu dem Pfad <code>/out/wave/img/backgrounds/</code>.',
+    'HELP_SHOP_THEME_sBackgroundPath'               => 'Relativ zu dem Pfad <code>/out/o3-theme/src/img/backgrounds/</code>.',
     'SHOP_THEME_sBackgroundRepeat'                  => 'Soll sich das Hintergrundbild wiederholen?',
     'SHOP_THEME_sBackgroundRepeat_no-repeat'        => 'Nein',
     'SHOP_THEME_sBackgroundRepeat_repeat-x'         => 'Ja, horizontal',

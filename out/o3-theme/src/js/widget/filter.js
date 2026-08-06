@@ -1,4 +1,4 @@
-// Hilfsfunktion für Debouncing
+// helper function for debouncing
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -7,7 +7,7 @@ function debounce(func, wait) {
     };
 }
 
-// Toggle-Funktion mit besserer Parameterverwaltung
+// toggle function with better parameter management
 function toggleFilterValues(valuesWrapper, button, expand, userAction = false) {
     const valueNumber = parseInt(valuesWrapper.dataset.valueNumber, 10) || 10;
     const path = button.querySelector("path");
@@ -29,7 +29,7 @@ function toggleFilterValues(valuesWrapper, button, expand, userAction = false) {
     }
 }
 
-// Zentrale Funktion für Filter-Button-Sichtbarkeit
+// central function for filter button visibility
 function updateFilterButton(filterContainer) {
     const button = filterContainer.querySelector('[data-js="listing:filter-show-more"]');
     const valuesWrapper = filterContainer.querySelector('[data-js="listing:filter-values"]');
@@ -55,7 +55,7 @@ function updateFilterButton(filterContainer) {
     }
 }
 
-// Suchfunktion für Filter-Items
+// search function for filter items
 function handleFilterSearch(searchInput) {
     const searchValue = searchInput.value.trim().toLowerCase();
     const filterContainer = searchInput.closest(".collapse");
@@ -75,7 +75,7 @@ function handleFilterSearch(searchInput) {
     updateFilterButton(filterContainer);
 }
 
-// Debounced Version der Suchfunktion
+// debounced version of the search function
 const debouncedFilterSearch = debounce(handleFilterSearch, 150);
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const isModal = form.closest('#offcanvas__filter') !== null;
         const selectedValues = {};
 
-        // Event Delegation für Checkboxen
+        // event delegation for checkboxes
         form.addEventListener('change', function(e) {
             const checkbox = e.target;
             if (!checkbox.classList.contains('form-check-input')) return;
@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const filterKey = hiddenInput.name;
 
-            // Initialisiere Array falls nötig
+            // initialize array if needed
             selectedValues[filterKey] = selectedValues[filterKey] || [];
 
-            // Update selectedValues
+            // update selectedValues
             if (checkbox.checked) {
                 if (!selectedValues[filterKey].includes(checkbox.value)) {
                     selectedValues[filterKey].push(checkbox.value);
@@ -107,14 +107,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 selectedValues[filterKey] = selectedValues[filterKey].filter(val => val !== checkbox.value);
             }
 
-            // Sofortiges Submit nur für Nicht-Modal-Filter
+            // immediate submit for non-modal filters only
             if (!isModal) {
                 hiddenInput.value = selectedValues[filterKey].join(',');
                 form.submit();
             }
         });
 
-        // Submit-Button für Modal
+        // submit button for modal
         if (isModal) {
             const submitButton = document.querySelector('[data-js="listing:filter-apply"]');
             submitButton?.addEventListener('click', function() {
@@ -128,13 +128,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Event Delegation für Suche (mit Debouncing)
+    // event delegation for search (with debouncing)
     document.addEventListener("input", function(e) {
         if (!e.target.matches('[data-js="listing:filter-search"]')) return;
         debouncedFilterSearch(e.target);
     });
 
-    // Event Delegation für Show More Buttons
+    // event delegation for show more buttons
     document.addEventListener("click", function(e) {
         const button = e.target.closest('[data-js="listing:filter-show-more"]');
         if (!button) return;

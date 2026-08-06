@@ -11,12 +11,15 @@
 
         [{block name="checkout_steps_send"}]
             <div class="component__steps-step[{if $active == 2}] active[{elseif $active > 2}] passed[{/if}]">
-                <div class="listing-point">01</div>
                 [{if $showStepLinks}]
+                    <a href="[{oxgetseourl ident=$oViewConf->getOrderLink()}]" class="listing-point-link">
+                        <div class="listing-point">01</div>
+                    </a>
                     <a href="[{oxgetseourl ident=$oViewConf->getOrderLink()}]">
                         [{oxmultilang ident="O3_STEPS_SEND"}]
                     </a>
                 [{else}]
+                    <div class="listing-point">01</div>
                     <span>[{oxmultilang ident="O3_STEPS_SEND"}]</span>
                 [{/if}]
             </div>
@@ -29,12 +32,15 @@
 
         [{block name="checkout_steps_pay"}]
             <div class="component__steps-step[{if $active == 3}] active[{elseif $active > 3}] passed[{/if}]">
-                <div class="listing-point">02</div>
                 [{if $showStepLinks}]
+                    <a href="[{oxgetseourl ident=$oViewConf->getPaymentLink()}]" class="listing-point-link">
+                        <div class="listing-point">02</div>
+                    </a>
                     <a href="[{oxgetseourl ident=$oViewConf->getPaymentLink()}]">
                         [{oxmultilang ident="O3_STEPS_PAY"}]
                     </a>
                 [{else}]
+                    <div class="listing-point">02</div>
                     <span>[{oxmultilang ident="O3_STEPS_PAY"}]</span>
                 [{/if}]
             </div>
@@ -47,12 +53,15 @@
 
         [{block name="checkout_steps_order"}]
             <div class="component__steps-step[{if $active == 4}] active[{elseif $active > 4}] passed[{/if}]">
-                <div class="listing-point">03</div>
                 [{if $showStepLinks}]
+                    <a href="[{oxgetseourl ident=$oViewConf->getOrderConfirmLink()}]" class="listing-point-link">
+                        <div class="listing-point">03</div>
+                    </a>
                     <a href="[{oxgetseourl ident=$oViewConf->getOrderConfirmLink()}]">
                         [{oxmultilang ident="O3_STEPS_ORDER"}]
                     </a>
                 [{else}]
+                    <div class="listing-point">03</div>
                     <span>[{oxmultilang ident="O3_STEPS_ORDER"}]</span>
                 [{/if}]
             </div>

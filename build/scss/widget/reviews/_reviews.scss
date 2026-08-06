@@ -88,3 +88,16 @@
 .details__reviews-message {
     width: 100%;
 }
+
+@media (max-width: 575.98px) {
+    .details__reviews-empty {
+        grid-template-columns: 1fr;
+        grid-template-areas: "title" "button" "svg";
+    }
+
+    .details__reviews-empty svg {
+        justify-self: center;
+        max-width: 100%;
+        height: auto;
+    }
+}

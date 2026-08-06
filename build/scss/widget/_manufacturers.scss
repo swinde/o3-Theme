@@ -22,6 +22,18 @@
     }
 }
 
+body.xxxl-enabled {
+    @include media-breakpoint-up(xxxl) {
+        $xxxl-rem: $xxxl-container-width / 16px;
+
+        .start__manufacturer {
+            &::before {
+                left: calc((-100vw + #{$xxxl-rem}rem - #{$grid-gutter-width}) / 2);
+            }
+        }
+    }
+}
+
 .start__manufacturer-box {
     display: flex;
     justify-content: center;
@@ -43,4 +55,12 @@
         top: 62px;
         right: 0;
     }
+}
+.start__manufacturer-item svg path {
+    fill: var(--bs-primary);
+}
+
+.start__manufacturer,
+.start__manufacturer::before {
+    background: var(--accent-color) !important;
 }

@@ -64,6 +64,7 @@ $aLang = [
     'O3_FORM_VALIDATION_PASSWORD_LOWERCASE_LETTER'          => 'At least 1 lowercase letter',
     'O3_FORM_VALIDATION_PASSWORD_NUMBER'                    => 'At least 1 number',
     'O3_FORM_VALIDATION_PASSWORD_SPECIAL_CHARACTER'         => 'At least 1 special character',
+    'DETAILS_VARIANT_NOT_AVAILABLE'                         => 'This variant combination is unfortunately not available.',
     'O3_FORM_VALIDATION_PASSWORD_WEAK'                      => 'Weak',
     'O3_FORM_VALIDATION_PASSWORD_MEDIUM'                    => 'Medium',
     'O3_FORM_VALIDATION_PASSWORD_STRONG'                    => 'Strong',
@@ -86,7 +87,7 @@ $aLang = [
     // Home page
     'MANUFACTURERSLIDER_SUBHEAD'                            => 'We present our carefully selected brands, whose products can be found in our shop.',
     'START_BARGAIN_HEADER'                                  => 'Week\'s Special',
-    'START_NEWEST_HEADER'                                   => 'Just arrived',
+    'START_NEWEST_HEADER'                                   => 'New arrivals',
     'START_TOP_PRODUCTS_HEADER'                             => 'Top seller',
     'START_BARGAIN_SUBHEADER'                               => 'Save money with our current bargains!',
     'START_NEWEST_SUBHEADER'                                => 'Fresh as it gets. One minute in the box and now already in store.',
@@ -203,6 +204,8 @@ $aLang = [
     'DD_SELECT_SALUTATION'                                  => 'Please choose',
 
     'DD_CATEGORY_RESET_BUTTON'                              => 'Reset',
+
+    'DD_FOOTER_O3ShopLink'                                  => '<a href="https://www.o3-shop.com/" target="_blank">powered by O3 Shop</a>',
 ];
 
 /*

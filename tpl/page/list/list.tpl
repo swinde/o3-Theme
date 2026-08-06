@@ -54,25 +54,95 @@
         [{if $oView->hasVisibleSubCats() || $oView->getAttributes()}]
             <div class="alist__orga">
                 [{if $oView->hasVisibleSubCats()}]
-                    <nav class="alist__orga-subcats" data-label="[{oxmultilang ident="DD_LIST_SUBCATEGORIES_LABEL"}]" aria-label="[{oxmultilang ident="DD_LIST_SUBCATEGORIES_LABEL"}]">
-                        [{foreach from=$oView->getSubCatList() item=category name=MoreSubCat}]
 
-                            [{if $category->getContentCats()}]
-                                [{foreach from=$category->getContentCats() item=ocont name=MoreCms}]
-                                    <a class="btn" href="[{$ocont->getLink()}]">[{$ocont->oxcontents__oxtitle->value}]</a>
+                    [{* CMS content-category pills — always shown above grid regardless of toggle *}]
+                    [{assign var="hasCmsCats" value=false}]
+                    [{foreach from=$oView->getSubCatList() item=category name=CmsCheck}]
+                        [{if $category->getContentCats()}][{assign var="hasCmsCats" value=true}][{/if}]
+                    [{/foreach}]
+                    [{if $hasCmsCats}]
+                        <nav class="alist__orga-subcats" aria-label="[{oxmultilang ident="DD_LIST_SUBCATEGORIES_LABEL"}]">
+                            [{foreach from=$oView->getSubCatList() item=category}]
+                                [{if $category->getContentCats()}]
+                                    [{foreach from=$category->getContentCats() item=ocont}]
+                                        <a class="btn" href="[{$ocont->getLink()}]">[{$ocont->oxcontents__oxtitle->value}]</a>
+                                    [{/foreach}]
+                                [{/if}]
+                            [{/foreach}]
+                        </nav>
+                    [{/if}]
+
+                    [{if $oView->getClassName() != "manufacturerlist"}]
+
+                        [{if $oViewConf->getViewThemeParam('blShowSubcatTiles')}]
+                            [{* TILE GRID MODE *}]
+                            <div class="d-flex flex-wrap col-12">
+                                [{foreach from=$oView->getSubCatList() item=category}]
+                                    [{if $category->getIsVisible()}]
+                                        <div class="component__productbox col-12 col-sm-6 col-md-4 col-lg-3 col-xxxl-fifth">
+                                            <div class="component__productbox-frame">
+                                                [{assign var="iconUrl" value=$category->getIconUrl()}]
+                                                [{if $iconUrl}]
+                                                    <div class="component__productbox-picture mb-4">
+                                                        <a class="component__productbox-picture-link" href="[{$category->getLink()}]" title="[{$category->oxcategories__oxtitle->value}]">
+                                                            <img loading="lazy" src="[{$iconUrl}]" alt="[{$category->oxcategories__oxtitle->value}]">
+                                                        </a>
+                                                    </div>
+                                                [{else}]
+                                                    <div class="component__productbox-picture mb-4">
+                                                        <a href="[{$category->getLink()}]" class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center">
+                                                            [{$category->oxcategories__oxtitle->value}]
+                                                        </a>
+                                                    </div>
+                                                [{/if}]
+                                                <a href="[{$category->getLink()}]" class="component__productbox-title">
+                                                    [{$category->oxcategories__oxtitle->value}]
+                                                </a>
+                                            </div>
+                                        </div>
+                                    [{/if}]
                                 [{/foreach}]
-                            [{/if}]
+                            </div>
 
-                            [{if $category->getIsVisible() && $oView->getClassName() != "manufacturerlist"}]
-                                <a class="btn" href="[{$category->getLink()}]">[{$category->oxcategories__oxtitle->value}]</a>
-                            [{elseif $oView->getClassName() == "manufacturerlist"}]
-                                <a class="start__manufacturer-box g-col-6 g-col-sm-4 g-col-lg-2" href="[{$category->getLink()}]" title="[{oxmultilang ident="VIEW_ALL_PRODUCTS"}]">
-                                    <img src="[{$category->getIconUrl()}]" alt="[{$category->oxcategories__oxtitle->value}]">
-                                </a>
-                            [{/if}]
+                        [{else}]
+                            [{* DEFAULT PILL MODE — identical to base o3-theme *}]
+                            <nav class="alist__orga-subcats" data-label="[{oxmultilang ident="DD_LIST_SUBCATEGORIES_LABEL"}]" aria-label="[{oxmultilang ident="DD_LIST_SUBCATEGORIES_LABEL"}]">
+                                [{foreach from=$oView->getSubCatList() item=category name=MoreSubCat}]
+                                    [{if $category->getContentCats()}]
+                                        [{foreach from=$category->getContentCats() item=ocont name=MoreCms}]
+                                            <a class="btn" href="[{$ocont->getLink()}]">[{$ocont->oxcontents__oxtitle->value}]</a>
+                                        [{/foreach}]
+                                    [{/if}]
+                                    [{if $category->getIsVisible()}]
+                                        <a class="btn" href="[{$category->getLink()}]">[{$category->oxcategories__oxtitle->value}]</a>
+                                    [{/if}]
+                                [{/foreach}]
+                            </nav>
 
-                        [{/foreach}]
-                    </nav>
+                        [{/if}]
+
+                    [{else}]
+                        [{* Manufacturer list: always use icon-pill behavior *}]
+                        <nav class="alist__orga-subcats" data-label="[{oxmultilang ident="DD_LIST_SUBCATEGORIES_LABEL"}]" aria-label="[{oxmultilang ident="DD_LIST_SUBCATEGORIES_LABEL"}]">
+                            [{foreach from=$oView->getSubCatList() item=category name=MoreSubCat}]
+                                [{if $category->getContentCats()}]
+                                    [{foreach from=$category->getContentCats() item=ocont name=MoreCms}]
+                                        <a class="btn" href="[{$ocont->getLink()}]">[{$ocont->oxcontents__oxtitle->value}]</a>
+                                    [{/foreach}]
+                                [{/if}]
+                                [{assign var='iconUrl' value=$category->getIconUrl()}]
+                                [{if $iconUrl}]
+                                    <a class="start__manufacturer-box g-col-6 g-col-sm-4 g-col-lg-2" href="[{$category->getLink()}]" title="[{oxmultilang ident="VIEW_ALL_PRODUCTS"}]">
+                                        <img src="[{$iconUrl}]" alt="[{$category->oxcategories__oxtitle->value}]">
+                                    </a>
+                                [{else}]
+                                    <a class="btn" href="[{$category->getLink()}]">[{$category->oxcategories__oxtitle->value}]</a>
+                                [{/if}]
+                            [{/foreach}]
+                        </nav>
+
+                    [{/if}]
+
                 [{/if}]
 
                 [{if $oView->getAttributes()}]

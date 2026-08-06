@@ -8,7 +8,7 @@
                         <a class="page-link" href="[{$pages->previousPage}]" aria-label="[{oxmultilang ident="PREVIOUS"}]">
                             <span aria-hidden="true">
                                 <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.50015 11.5L1.88477 6.5L6.50015 1.5" stroke="#82BA00" stroke-width="1.5" stroke-linecap="square"/>
+                                    <path d="M6.50015 11.5L1.88477 6.5L6.50015 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
                                 </svg>
                             </span>
                             <span class="visually-hidden">[{oxmultilang ident="PREVIOUS"}]</span>
@@ -53,7 +53,7 @@
                         <a class="page-link" href="[{$pages->nextPage}]" aria-label="[{oxmultilang ident="NEXT"}]">
                             <span aria-hidden="true">
                                 <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.49985 1.5L6.11523 6.5L1.49985 11.5" stroke="#82BA00" stroke-width="1.5" stroke-linecap="square"/>
+                                    <path d="M1.49985 1.5L6.11523 6.5L1.49985 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
                                 </svg>
                             </span>
                             <span class="visually-hidden">[{oxmultilang ident="NEXT"}]</span>

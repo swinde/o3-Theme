@@ -4,6 +4,15 @@
 
     [{if $oBanners|@count}]
 
+        [{* Count valid (non-nopic, non-fixedBanner) slides *}]
+        [{assign var="iValidBanners" value=0}]
+        [{foreach from=$oBanners item="oBannerCheck"}]
+            [{assign var="sCheckUrl" value=$oBannerCheck->getBannerPictureUrl()}]
+            [{if $sCheckUrl && !($sCheckUrl|strstr:'nopic') && !$oBannerCheck->oxactions__oxid->value|strstr:"fixedBanner"}]
+                [{assign var="iValidBanners" value=$iValidBanners+1}]
+            [{/if}]
+        [{/foreach}]
+
         <div class="start__promoslider splide" data-splide='{
                                 "mediaQuery": "min",
                                 "rewind": true,
@@ -18,7 +27,10 @@
                                 "breakpoints":{
                                     "1400":{
                                         "pagination": false,
-                                        "arrows": true
+                                        "arrows": [{if $iValidBanners > 1}]true[{else}]false[{/if}]
+                                    },
+                                    "992":{
+                                        "arrows": [{if $iValidBanners > 1}]true[{else}]false[{/if}]
                                     },
                                     "0":{
                                         "arrows": false
@@ -26,6 +38,7 @@
                                 }
                                 }'
         >
+            [{if $iValidBanners > 1}]
             <div class="splide__arrows">
                 <button type="button" class="splide__arrow splide__arrow--prev">
                     <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,6 +51,7 @@
                     </svg>
                 </button>
             </div>
+            [{/if}]
             <div class="splide__track">
                 <div class="splide__list">
                     [{block name="dd_widget_promoslider_list"}]

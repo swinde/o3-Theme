@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const recommlistratingInput = document.querySelector('input[name="recommlistrating"]');
     let selectedRating = 0;
 
-    // Prüfe, ob beide Inputs existieren
+    // check whether both inputs exist
     const inputsExist = artratingInput && recommlistratingInput;
 
     stars.forEach((star, index) => {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         star.addEventListener("click", () => {
             selectedRating = index + 1;
 
-            // Setze nur den Wert, wenn beide Inputs existieren
+            // only set value when both inputs exist
             if (inputsExist) {
                 artratingInput.value = selectedRating;
                 recommlistratingInput.value = selectedRating;

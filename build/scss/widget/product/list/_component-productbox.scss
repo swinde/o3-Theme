@@ -47,7 +47,8 @@
 }
 
 .component__productbox-title {
-	height: 40px;
+	height: auto;
+	min-height: 40px;
 	margin-bottom: 10px;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -153,4 +154,10 @@
 .component__productbox-price-old {
 	font-size: 0.75rem;
 	color: $input-placeholder-color;
+}
+// Splide stacking context shifts heart buttons — !important needed to beat generated styles
+.component__productslider .component__productbox-noticelist,
+.component__productslider .component__productbox-remove {
+    top: 16px !important;
+    right: 16px !important;
 }

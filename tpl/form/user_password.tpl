@@ -32,7 +32,7 @@
 
             <div class="input-group has-validation">
                 <div class="form-floating flex-grow-1">
-                    <input id="userPassword" type="password" name="password_new" class="form-control border-end-0" placeholder="[{oxmultilang ident="NEW_PASSWORD"}]" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{[{$oViewConf->getPasswordLength()}],}$" autocomplete="new-password">
+                    <input id="userPassword" type="password" name="password_new" class="form-control border-end-0" placeholder="[{oxmultilang ident="NEW_PASSWORD"}]" required autocomplete="new-password">
                     <label for="userPassword">[{oxmultilang ident="NEW_PASSWORD"}]</label>
                 </div>
                 <button class="btn btn-input border-start-0" type="button" data-js="toggle-password" data-target="userPassword" aria-label="Passwort anzeigen" aria-pressed="false">
@@ -57,7 +57,7 @@
     <div class="mb-3">
         <div class="input-group has-validation">
             <div class="form-floating flex-grow-1">
-                <input id="userPasswordConfirm" type="password" name="password_new_confirm" class="form-control border-end-0" placeholder="[{oxmultilang ident="CONFIRM_PASSWORD"}]" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{[{$oViewConf->getPasswordLength()}],}$" autocomplete="new-password">
+                <input id="userPasswordConfirm" type="password" name="password_new_confirm" class="form-control border-end-0" placeholder="[{oxmultilang ident="CONFIRM_PASSWORD"}]" required autocomplete="new-password">
                 <label for="userPasswordConfirm">[{oxmultilang ident="CONFIRM_PASSWORD"}]</label>
             </div>
             <button class="btn btn-input border-start-0" type="button" data-js="toggle-password" data-target="userPasswordConfirm" aria-label="Passwort anzeigen" aria-pressed="false">

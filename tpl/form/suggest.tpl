@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    [{block name="captcha_form"}][{/block}]
+    [{block name="captcha_form"}][{if method_exists($oViewConf, 'getCaptchaWidget')}][{$oViewConf->getCaptchaWidget('suggest')}][{/if}][{/block}]
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">

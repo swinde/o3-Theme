@@ -1,3 +1,6 @@
 .component__productslider {
     margin-bottom: 80px;
 }
+
+.component__productslider .splide__arrow--prev { left: 15px; }
+.component__productslider .splide__arrow--next { right: 15px; }

@@ -1,0 +1,9 @@
+// 3XL: 5 products per row (20% = 100% / 5, not representable in Bootstrap's 12-column grid)
+body.xxxl-enabled {
+    @include media-breakpoint-up(xxxl) {
+        .col-xxxl-fifth {
+            flex: 0 0 auto;
+            width: 20%;
+        }
+    }
+}

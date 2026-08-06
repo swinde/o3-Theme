@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Liefert den richtigen reloadaddress-Wert
+    // returns the correct reloadaddress value
     function getReloadValue(selectValue) {
         return selectValue === '-1' ? '1' : '2';
     }
 
-    // Entfernt die Edit- und Delete-Buttons innerhalb von .user__shippingaddress-change
+    // removes edit and delete buttons inside .user__shippingaddress-change
     function removeButtons() {
         const shippingForm = document.querySelector('.user__shippingaddress-change');
         if (shippingForm) {
@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setNewAddress() {
 
-        // Umschalten des disabled-Status
+        // toggle disabled state
         const formElements = document.querySelectorAll('.user__shippingaddress-form input, .user__shippingaddress-form select');
         formElements.forEach(item => item.toggleAttribute('disabled'));
 
-        // Entfernen der Buttons .btn-edit und .btn-delete innerhalb von .user__shippingaddress-change
+        // remove .btn-edit and .btn-delete buttons inside .user__shippingaddress-change
         removeButtons();
 
-        // Country und State Selects zurücksetzen
+        // reset country and state selects
         const countrySelect = document.querySelector("select[name='deladr[oxaddress__oxcountryid]']");
         const stateSelect = document.querySelector("select[name='deladr[oxaddress__oxstateid]']");
 
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (stateSelect) stateSelect.value = "";
     }
 
-    // Setzt Formularwerte und sendet das Formular ab
+    // set form values and submit
     function submitForm() {
         const orderForm = document.querySelector("form[name='order']");
         const changeClassValue = document.querySelector("input[name='changeClass']").value;
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         orderForm.submit();
     }
 
-    // Event-Listener für das Ändern der Lieferadresse
+    // event listener for shipping address changes
     const addressSelect = document.querySelectorAll("input[name='oxaddressid']");
     const addressEmpty = document.querySelector("#user__shippingaddress-change");
 
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 if (selectValue !== '-1') {
-                    // Formularvalidierung deaktivieren und Formular verstecken
+                    // disable form validation and hide form
                     /*
                     document.querySelectorAll('.js-oxValidate').forEach(element => {
                         element.removeEventListener('submit', function() {});

@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Suche nach allen Buttons mit dem Attribut "data-js-noticelist"
+    // find all buttons with the data-js-noticelist attribute
     const buttons = document.querySelectorAll('button[data-js-noticelist]');
 
     buttons.forEach(button => {
         button.addEventListener('click', event => {
-            event.preventDefault(); // Verhindert das Standard-Submit-Verhalten des Buttons
+            event.preventDefault(); // prevent default button submit behaviour
 
-            // Hole das Formular anhand des Wertes im data-js-noticelist-Attribut
+            // get the form by the value in the data-js-noticelist attribute
             const formId = button.dataset.jsNoticelist;
             const targetForm = document.getElementById(formId);
 
-            // Überprüfen, ob das Formular gefunden wurde und absenden
-            targetForm?.submit() || console.error(`Formular mit der ID "${formId}" wurde nicht gefunden.`);
+            // submit the form if found, otherwise log an error
+            targetForm?.submit() || console.error(`Form with id "${formId}" not found.`);
         });
     });
 });

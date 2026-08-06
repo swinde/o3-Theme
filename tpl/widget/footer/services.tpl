@@ -28,6 +28,15 @@
                 </div>
             [{/block}]
         [{/if}]
+        [{block name="o3_footer_guarantee_notice"}]
+            [{if method_exists($oViewConf, 'getGuaranteeNoticeUrl') && $oViewConf->getGuaranteeNoticeUrl()}]
+                [{* The notice artwork must be visible without any interaction - no click-to-reveal. *}]
+                <div class="footer__guarantee-rights o3-guarantee-rights">
+                    <div class="o3-guarantee-rights__title">[{oxmultilang ident="O3_GUARANTEE_RIGHTS_LINK"}]</div>
+                    [{include file="layout/inc/guaranteenotice.tpl"}]
+                </div>
+            [{/if}]
+        [{/block}]
     [{/block}]
 
 [{/block}]

@@ -88,7 +88,7 @@ footer {
     justify-content: center;
     align-items: center;
     margin-right: 15px;
-    background-color: #6B7A6B;
+    background-color: var(--bs-primary);
 
     &:hover {
         background-color: var(--bs-primary);

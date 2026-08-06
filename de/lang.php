@@ -64,6 +64,7 @@ $aLang = [
     'O3_FORM_VALIDATION_PASSWORD_LOWERCASE_LETTER'          => 'Mindestens 1 Kleinbuchstabe',
     'O3_FORM_VALIDATION_PASSWORD_NUMBER'                    => 'Mindestens 1 Zahl',
     'O3_FORM_VALIDATION_PASSWORD_SPECIAL_CHARACTER'         => 'Mindestens 1 Sonderzeichen',
+    'DETAILS_VARIANT_NOT_AVAILABLE'                         => 'Diese Varianten-Kombination ist leider nicht verfügbar.',
     'O3_FORM_VALIDATION_PASSWORD_WEAK'                      => 'Schwach',
     'O3_FORM_VALIDATION_PASSWORD_MEDIUM'                    => 'Mittel',
     'O3_FORM_VALIDATION_PASSWORD_STRONG'                    => 'Stark',
@@ -86,7 +87,7 @@ $aLang = [
     // Startseite
     'MANUFACTURERSLIDER_SUBHEAD'                            => 'Wir präsentieren Ihnen hier unsere sorgsam ausgewählten Marken, deren Produkte Sie in unserem Shop finden.',
     'START_BARGAIN_HEADER'                                  => 'Angebote der Woche',
-    'START_NEWEST_HEADER'                                   => 'Frisch eingetroffen',
+    'START_NEWEST_HEADER'                                   => 'Neu im Angebot',
     'START_TOP_PRODUCTS_HEADER'                             => 'Topseller',
     'START_BARGAIN_SUBHEADER'                               => 'Sparen Sie bares Geld mit unseren aktuellen Schnäppchen!',
     'START_NEWEST_SUBHEADER'                                => 'Frischer geht es nicht. Gerade noch in der Kiste und nun schon im Shop.',

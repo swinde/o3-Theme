@@ -173,4 +173,49 @@ header {
 	}
 }
 
+body.xxxl-enabled {
+	@include media-breakpoint-up(xxxl) {
+		$xxxl-rem: $xxxl-container-width / 16px;
+
+		.header__topinfo {
+			&::before {
+				left: calc((-100vw + #{$xxxl-rem}rem - #{$grid-gutter-width}) / 2);
+			}
+		}
+
+		.header__mainnav {
+			&::after {
+				left: calc((-100vw + #{$xxxl-rem}rem + $navbar-nav-link-padding-x - #{$grid-gutter-width}) / 2);
+			}
+		}
+	}
+}
+
+.header__search-button {
+    background-color: var(--page-bg) !important;
+}
+
+.header__topinfo {
+    background-color: var(--accent-color) !important;
+}
+
+.header__mainnav {
+    background-color: var(--page-bg) !important;
+}
+
+.header__topinfo .flex-grow-1 p {
+    margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+    .header__topinfo {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .header__topinfo > div:last-child {
+        display: flex !important;
+        justify-content: flex-end;
+        grid-column: 3;
+    }
+}
 

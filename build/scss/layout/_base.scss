@@ -10,7 +10,7 @@ html {
 
 main {
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 
     &.backdrop {
         &:after {
@@ -66,7 +66,7 @@ main {
     justify-content: center;
     width: 41px;
     height: 41px;
-    background-color: $secondary;
+    background-color: var(--bs-secondary);
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--bs-primary);
@@ -280,4 +280,87 @@ input[type="number"] {
 .mode__bottomright {
 	bottom: 0;
 	right: 0;
+}
+// Bootstrap compiles $primary/$secondary into component-level CSS vars at build time.
+// These overrides make components respond to the admin-configurable custom properties.
+.btn-primary {
+    --bs-btn-active-bg: var(--bs-primary);
+    --bs-btn-active-border-color: var(--bs-primary);
+    --bs-btn-disabled-bg: var(--bs-primary);
+    --bs-btn-disabled-border-color: var(--bs-primary);
+}
+
+.btn-secondary {
+    --bs-btn-bg: var(--bs-secondary);
+    --bs-btn-border-color: var(--bs-secondary);
+    --bs-btn-hover-bg: var(--bs-secondary);
+    --bs-btn-hover-border-color: var(--bs-secondary);
+    --bs-btn-active-bg: var(--bs-secondary);
+    --bs-btn-active-border-color: var(--bs-secondary);
+    --bs-btn-disabled-bg: var(--bs-secondary);
+    --bs-btn-disabled-border-color: var(--bs-secondary);
+}
+
+.btn-outline-secondary {
+    --bs-btn-color: var(--bs-secondary);
+    --bs-btn-border-color: var(--bs-secondary);
+    --bs-btn-hover-bg: var(--bs-secondary);
+    --bs-btn-hover-border-color: var(--bs-secondary);
+    --bs-btn-active-bg: var(--bs-secondary);
+    --bs-btn-active-border-color: var(--bs-secondary);
+}
+
+.form-check-input:checked {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.form-check-input[type=checkbox]:indeterminate {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.form-range::-webkit-slider-thumb {
+    background-color: var(--bs-primary);
+}
+
+.form-range::-moz-range-thumb {
+    background-color: var(--bs-primary);
+}
+
+.nav-pills {
+    --bs-nav-pills-link-active-bg: var(--bs-primary);
+}
+
+.progress,
+.progress-stacked {
+    --bs-progress-bar-bg: var(--bs-primary);
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: var(--bs-primary);
+}
+
+.dropdown-menu-dark {
+    --bs-dropdown-link-active-bg: var(--bs-primary);
+}
+
+.pagination {
+    --bs-pagination-active-bg: var(--bs-primary);
+    --bs-pagination-active-border-color: var(--bs-primary);
+}
+
+.list-group {
+    --bs-list-group-active-bg: var(--bs-primary);
+    --bs-list-group-active-border-color: var(--bs-primary);
+}
+
+// Eye-icon toggle button inherits validation state from sibling input across input-group boundary
+.was-validated .input-group.has-validation:has(.form-control:invalid) > .btn-input,
+.input-group.has-validation:has(.form-control.is-invalid) > .btn-input {
+    border-color: var(--bs-form-invalid-border-color);
+}
+.was-validated .input-group.has-validation:has(.form-control:invalid) > .btn-input svg,
+.input-group.has-validation:has(.form-control.is-invalid) > .btn-input svg {
+    fill: var(--bs-form-invalid-color);
 }

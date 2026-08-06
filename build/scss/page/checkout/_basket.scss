@@ -43,7 +43,7 @@
 
 .basket__proceed {
     grid-area: proceed;
-    background-color: $secondary;
+    background-color: var(--bs-secondary);
     padding: 0 30px 30px;
     height: max-content;
     margin-left: calc(var(--bs-gutter-x) * -1);

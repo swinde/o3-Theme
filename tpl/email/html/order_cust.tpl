@@ -181,6 +181,22 @@
                                 </p>
                             [{/if}]
                         </p>
+                        [{assign var="oGuaranteeArticle" value=$basketitem->getArticle()}]
+                        [{if $oGuaranteeArticle && method_exists($oViewConf, 'getDurabilityGuaranteeLabelsEnabled') && $oViewConf->getDurabilityGuaranteeLabelsEnabled() && method_exists($oGuaranteeArticle, 'isDurabilityGuaranteeEligible') && $oGuaranteeArticle->isDurabilityGuaranteeEligible()}]
+                            [{assign var="sGuaranteeLabelUrl" value=$oGuaranteeArticle->getDurabilityGuaranteeLabelUrl()}]
+                            [{assign var="sGuaranteeGuarantor" value=$oGuaranteeArticle->getGuaranteeGuarantor()}]
+                            [{if $sGuaranteeLabelUrl}]
+                                <div style="margin:8px 0;">
+                                    <img src="[{$sGuaranteeLabelUrl}]" alt="[{oxmultilang ident="O3_GUARANTEE_LABEL_IMG_ALT"}]" width="220" style="width:220px;max-width:100%;height:auto;border:0;">
+                                </div>
+                            [{elseif $sGuaranteeGuarantor}]
+                                <p style="margin:8px 0;font-size:12px;">
+                                    [{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_DURATION" args=$oGuaranteeArticle->getGuaranteeYears()}]
+                                    ([{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_GUARANTOR" args=$sGuaranteeGuarantor|escape}]).
+                                    [{oxmultilang ident="O3_GUARANTEE_LEGAL_REMINDER"}]
+                                </p>
+                            [{/if}]
+                        [{/if}]
                     </td>
                     <td align="right">
                         [{block name="email_html_order_cust_basketitem_unitprice"}]

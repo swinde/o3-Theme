@@ -9,51 +9,51 @@ document.addEventListener('DOMContentLoaded', function() {
     const onVariantChange = (e) => {
         e.preventDefault();
 
-        // Formulardaten erfassen und serialisieren
+        // capture and serialize form data
         const reloadForm = document.querySelector('.js-oxWidgetReload');
         let formData = serialize(reloadForm);
         const aSelects = document.querySelectorAll('select[name^=varselid]', 'form.js-oxProductForm');
 
-        // Serialisierte Dropdown-Werte anhängen
+        // append serialized dropdown values
         formData += Array.from(aSelects).map((select, i) => `&varselid%5B${i}%5D=${encodeURIComponent(select.value)}`).join('');
 
-        // AJAX-Aufruf mit fetch API
+        // fetch API call
         fetch(`/widget.php?${formData}`, { method: 'GET' })
             .then(response => {
-                if (!response.ok) throw new Error('Netzwerk-Antwort war nicht ok');
+                if (!response.ok) throw new Error('Network response was not ok');
                 return response.text();
             })
             .then(html => {
-                // Markup ersetzen
+                // replace markup
                 document.querySelector('[data-js="reload"]').outerHTML = html;
 
-                // Event-Listener erneut binden
+                // re-bind event listeners
                 initVariantSelects();
 
-                // Bilderslider neu initialisieren, wenn Thumbnails vorhanden sind
+                // re-init picture slider if thumbnails are present
                 if (document.querySelector('.details__picture-thumbnails')) {
                     initPictureSlider();
                 }
 
-                // Cross-Selling-Slider neu initialisieren, falls vorhanden
+                // re-init product slider if present
                 if (document.querySelector('.component__productslider')) {
                     initAllProductSliders();
                 }
 
             })
             .catch(error => {
-                console.error('Fetch-Fehler:', error);
+                console.error('Fetch error:', error);
             });
     };
 
-    // Initialer Aufruf zur Einrichtung der Event-Listener
+    // initial call to set up event listeners
     initVariantSelects();
 
     /**
-     * Serialisiert alle Formulardaten in einen Query-String
+     * Serializes all form data into a query string
      * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
-     * @param  {Node} form - Das zu serialisierende Formular
-     * @return {String} - Die serialisierten Formulardaten
+     * @param  {Node} form - the form to serialize
+     * @return {String} - the serialized form data
      */
     const serialize = (form) => {
         return Array.from(form.elements).reduce((serialized, field) => {

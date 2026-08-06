@@ -118,7 +118,7 @@
 
         &:checked {
             & + .form-check-label {
-                background-color: $secondary;
+                background-color: var(--bs-secondary);
             }
         }
     }

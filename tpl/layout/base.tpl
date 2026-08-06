@@ -86,9 +86,6 @@
             [{oxstyle include="css/photoswipe.css"}]
         [{/block}]
 
-        [{block name="base_fonts"}]
-        [{/block}]
-
         [{assign var='rsslinks' value=$oView->getRssLinks()}]
         [{block name="head_link_rss"}]
             [{if $rsslinks}]
@@ -116,24 +113,42 @@
             [{$_block}]
         [{/foreach}]
         [{oxstyle}]
-        [{if $oViewConf->getViewThemeParam('blPrimaryColor') || $oViewConf->getViewThemeParam('blSecondaryColor') || $oViewConf->getViewThemeParam('blFooterColor')}]
-            <style>
-                :root {
-                [{if $oViewConf->getViewThemeParam('blPrimaryColor')}]
-                    --bs-primary:[{$oViewConf->getViewThemeParam('blPrimaryColor')}];
-                [{/if}]
-                [{if $oViewConf->getViewThemeParam('blSecondaryColor')}]
-                    --bs-secondary: [{$oViewConf->getViewThemeParam('blSecondaryColor')}];
-                [{/if}]
-                [{if $oViewConf->getViewThemeParam('blFooterColor')}]
-                    --footer-bg: [{$oViewConf->getViewThemeParam('blFooterColor')}];
-                [{/if}]
-                }
-            </style>
-        [{/if}]
+        <style>
+            :root {
+            [{if $oViewConf->getViewThemeParam('sPrimaryColor')}]
+                --bs-primary: [{$oViewConf->getViewThemeParam('sPrimaryColor')}];
+            [{/if}]
+            [{if $oViewConf->getViewThemeParam('sSecondaryColor')}]
+                --bs-secondary: [{$oViewConf->getViewThemeParam('sSecondaryColor')}];
+            [{/if}]
+            [{if $oViewConf->getViewThemeParam('sAccentColor')}]
+                --accent-color: [{$oViewConf->getViewThemeParam('sAccentColor')}];
+            [{/if}]
+            [{if $oViewConf->getViewThemeParam('sFooterColor')}]
+                --footer-bg: [{$oViewConf->getViewThemeParam('sFooterColor')}];
+            [{/if}]
+            [{if $oViewConf->getViewThemeParam('sBackgroundColor')}]
+                --page-bg: [{$oViewConf->getViewThemeParam('sBackgroundColor')}];
+                --bs-body-bg: var(--page-bg);
+            [{/if}]
+            [{if $oViewConf->getViewThemeParam('iContentInnerMargin')}]
+                --content-inner-margin: [{$oViewConf->getViewThemeParam('iContentInnerMargin')|cat:"px"}];
+            [{/if}]
+            }
+            [{assign var="sBgFile" value=$oViewConf->getViewThemeParam('sBackgroundImage')}]
+            [{if $oViewConf->getViewThemeParam('sShowBackgroundImage') && $sBgFile && !$smarty.get.plain}]
+            body {
+                background-image: url('[{$oViewConf->getResourceUrl()|cat:"img/"|cat:$sBgFile}]');
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            [{/if}]
+        </style>
     </head>
 
-    <body class="cl-[{$oView->getClassName()}][{if $blIsCheckout}] is-checkout[{/if}][{if $oxcmp_user && $oxcmp_user->oxuser__oxpassword->value}] is-logged[{/if}]">
+    <body class="cl-[{$oView->getClassName()}][{if $blIsCheckout}] is-checkout[{/if}][{if $oxcmp_user && $oxcmp_user->oxuser__oxpassword->value}] is-logged[{/if}][{if $oViewConf->getViewThemeParam('sShowBackgroundImage') && $sBgFile && !$smarty.get.plain}] has-bg-image[{/if}][{if $oViewConf->getViewThemeParam('sEnable3xl')}] xxxl-enabled[{/if}]">
 
     [{block name="theme_svg_icons"}][{/block}]
 

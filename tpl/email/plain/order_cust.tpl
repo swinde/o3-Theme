@@ -59,6 +59,13 @@
 [{block name="email_plain_order_cust_amount"}][{oxmultilang ident="QUANTITY"}] [{$basketitem->getAmount()}][{/block}]
 [{block name="email_plain_order_cust_vat"}][{oxmultilang ident="VAT"}] [{$basketitem->getVatPercent()}]%[{/block}]
 [{block name="email_plain_order_cust_price"}][{oxmultilang ident="TOTAL"}] [{$basketitem->getFTotalPrice()}] [{$currency->name}][{/block}]
+[{assign var="oGuaranteeArticle" value=$basketitem->getArticle()}]
+[{if $oGuaranteeArticle && method_exists($oViewConf, 'getDurabilityGuaranteeLabelsEnabled') && $oViewConf->getDurabilityGuaranteeLabelsEnabled() && method_exists($oGuaranteeArticle, 'isDurabilityGuaranteeEligible') && $oGuaranteeArticle->isDurabilityGuaranteeEligible()}]
+[{assign var="sGuaranteeGuarantor" value=$oGuaranteeArticle->getGuaranteeGuarantor()}]
+[{if $sGuaranteeGuarantor}]
+[{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_DURATION" args=$oGuaranteeArticle->getGuaranteeYears()}] ([{oxmultilang ident="O3_GUARANTEE_LABEL_FALLBACK_GUARANTOR" args=$sGuaranteeGuarantor}]). [{oxmultilang ident="O3_GUARANTEE_LEGAL_REMINDER"}]
+[{/if}]
+[{/if}]
 [{/block}]
 [{/foreach}]
 ------------------------------------------------------------------

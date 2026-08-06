@@ -78,7 +78,7 @@
 .offcanvas__basket-costs {
     display: flex;
     flex-wrap: wrap;
-    background-color: $secondary;
+    background-color: var(--bs-secondary);
     padding: calc(var(--bs-offcanvas-padding-x) * 2) calc(var(--bs-offcanvas-padding-x) * 2);
     margin: 0 calc(var(--bs-offcanvas-padding-x) * -2);
 

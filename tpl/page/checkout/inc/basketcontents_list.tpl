@@ -1,4 +1,19 @@
 [{* basket items *}]
+[{if !$editable}]
+[{* #219 order-review cart line: tidy, vertically-aligned layout (title on its own line,
+   Verpackung + compact guarantee label stacked left, stepper and price centered). *}]
+<style>
+.component__basketarticle:has(.o3-orderline){align-items:center;}
+.o3-orderline{align-items:center;column-gap:2rem;row-gap:.4rem;}
+.o3-orderline>.component__basketarticle-title{width:100%;margin-bottom:.1rem;}
+.o3-orderline>.d-flex.flex-column{gap:2px;justify-content:space-between;align-self:stretch;}
+.o3-orderline>.d-flex.flex-column .wrapping{line-height:1.1;margin-top:-.35rem;}
+.o3-orderline .o3-guarantee--order{margin:0;line-height:0;}
+.o3-orderline .o3-guarantee--order .o3-guarantee__summary{max-width:none;padding:0;line-height:0;}
+.o3-orderline .o3-guarantee__banner{max-height:1.05rem;width:auto;display:block;}
+.o3-orderline .component__basketarticle-price{align-self:center;}
+</style>
+[{/if}]
 [{assign var="basketitemlist" value=$oView->getBasketArticles()}]
 [{assign var="oConfig" value=$oViewConf->getConfig()}]
 [{foreach key=basketindex from=$oxcmp_basket->getContents() item=basketitem name=basketContents}]
@@ -20,7 +35,7 @@
                 [{/if}]
             [{/block}]
 
-            <div class="component__basketarticle-info">
+            <div class="component__basketarticle-info[{if !$editable}] o3-orderline[{/if}]">
                 [{block name="checkout_basketcontents_basketitem_titlenumber"}]
                     [{block name="checkout_basketcontents_basketitem_title"}]
                         [{if $editable}]
@@ -121,6 +136,8 @@
                     *}]
                 [{/block}]
 
+                [{* Verpackung + guarantee label stacked, centered against the +/- stepper for flush alignment (#219). *}]
+                <div class="d-flex flex-column">
                 [{block name="checkout_basketcontents_basketitem_wrapping"}]
                     [{* product wrapping *}]
                     [{if $oView->isWrapping()}]
@@ -142,6 +159,15 @@
                         </div>
                     [{/if}]
                 [{/block}]
+
+                [{* EU durability-guarantee label under the product info, left-aligned (#219): each *}]
+                [{* eligible product carries its own label — a basket may mix different durations. *}]
+                [{if !$editable}]
+                    [{assign var="oGuaranteeArticle" value=$oArticle}]
+                    [{assign var="sGuaranteeContext" value="o3-guarantee--order"}]
+                    [{include file="page/details/inc/guaranteelabel.tpl"}]
+                [{/if}]
+                </div>[{* /Verpackung + label column *}]
 
                 [{block name="checkout_basketcontents_basketitem_amount"}]
                     [{*

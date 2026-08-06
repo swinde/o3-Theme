@@ -36,7 +36,10 @@
                 <div class="splide__list">
                     [{foreach from=$oView->getIcons() key="iPicNr" item="oArtIcon" name="sMorePics"}]
                         [{assign var="sPicName" value=$oPictureProduct->getPictureFieldValue("oxpic", $iPicNr)}]
-                        [{assign var="aPicInfo" value=$oConfig->getMasterPicturePath("product/`$iPicNr`/`$sPicName`")|@getimagesize}]
+                        [{* Guard getimagesize() against an empty/unresolved path (PHP 8 ValueError). *}]
+                        [{assign var="sPicPath" value=$oConfig->getMasterPicturePath("product/`$iPicNr`/`$sPicName`")}]
+                        [{assign var="aPicInfo" value=""}]
+                        [{if $sPicPath}][{assign var="aPicInfo" value=$sPicPath|@getimagesize}][{/if}]
                         <div class="splide__slide[{if $iPicNr == 1}] active[{/if}]">
                             <a class="details__picture-zoom-link" href="[{$oPictureProduct->getMasterZoomPictureUrl($iPicNr)}]"[{if $aPicInfo}] data-width="[{$aPicInfo.0}]" data-height="[{$aPicInfo.1}]"[{/if}]>
                                 <img src="[{$oPictureProduct->getPictureUrl($iPicNr)}]" alt="[{$oPictureProduct->oxarticles__oxtitle->value|strip_tags}] [{$oPictureProduct->oxarticles__oxvarselect->value|strip_tags}]" itemprop="image" class="splide__img">
@@ -47,7 +50,10 @@
             </div>
         [{else}]
             [{assign var="sPicName" value=$oPictureProduct->oxarticles__oxpic1->value}]
-            [{assign var="aPicInfo" value=$oConfig->getMasterPicturePath("product/1/`$sPicName`")|@getimagesize}]
+            [{* Guard getimagesize() against an empty/unresolved path (PHP 8 ValueError). *}]
+            [{assign var="sPicPath" value=$oConfig->getMasterPicturePath("product/1/`$sPicName`")}]
+            [{assign var="aPicInfo" value=""}]
+            [{if $sPicPath}][{assign var="aPicInfo" value=$sPicPath|@getimagesize}][{/if}]
             <a class="details__picture-zoom-link" href="[{$oPictureProduct->getMasterZoomPictureUrl(1)}]"[{if $aPicInfo}] data-width="[{$aPicInfo.0}]" data-height="[{$aPicInfo.1}]"[{/if}]>
                 <img src="[{$oPictureProduct->getPictureUrl(1)}]" alt="[{$oPictureProduct->oxarticles__oxtitle->value|strip_tags}] [{$oPictureProduct->oxarticles__oxvarselect->value|strip_tags}]" itemprop="image">
             </a>

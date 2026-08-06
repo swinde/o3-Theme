@@ -358,20 +358,20 @@
         }
 
         a {
-            color: #82BA00;
+            color: #950952;
             text-decoration: none;
         }
 
         a:hover {
-            color: #82BA00 !important;
+            color: #950952 !important;
         }
 
         a:active {
-            color: #82BA00 !important;
+            color: #950952 !important;
         }
 
         a:visited {
-            color: #82BA00 !important;
+            color: #950952 !important;
         }
 
         h1 a,

@@ -1,0 +1,144 @@
+// EU guarantee labels (#219). Colour rendering is legally mandatory - never filter these images.
+
+// Nested GARAN banner in the buy area / order rows: official asset, only the duration is substituted.
+// CSS-only <details>: summary = nested banner, open state = full label plus conditions.
+.o3-guarantee {
+    margin: 1rem 0;
+
+    &__summary {
+        display: block;
+        width: 100%;
+        max-width: 250px;
+        cursor: pointer;
+        list-style: none;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        &::marker {
+            content: "";
+        }
+
+        &:focus-visible {
+            outline: 2px solid #003399;
+            outline-offset: 3px;
+        }
+    }
+
+    &__banner {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    &__panel {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        margin-top: .5rem;
+    }
+
+    &__full {
+        display: block;
+        max-width: 250px;
+        cursor: zoom-in;
+    }
+
+    &__full-img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    &__conditions {
+        font-size: .875rem;
+
+        summary {
+            cursor: pointer;
+
+            &:focus-visible {
+                outline: 2px solid #003399;
+                outline-offset: 3px;
+            }
+        }
+    }
+
+    &__conditions-body {
+        margin-top: .35rem;
+    }
+
+    &__fallback {
+        font-size: .875rem;
+        margin: .5rem 0;
+    }
+
+    // Degradation: full label rendered directly, no expand affordance.
+    &--static {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        .o3-guarantee__full {
+            max-width: 200px;
+        }
+    }
+
+    // Order rows: smaller nested banner per the approved design.
+    &--order {
+        margin: .5rem 0;
+
+        .o3-guarantee__summary {
+            max-width: 170px;
+        }
+    }
+}
+
+// Footer heading above the always-visible legal-guarantee notice.
+.o3-guarantee-rights {
+    &__title {
+        margin-bottom: .6rem;
+    }
+}
+
+// EU legal-guarantee notice artwork, always rendered in the footer.
+.o3-guarantee-notice {
+    // Hug the artwork instead of stretching the bordered box full width (#219 review).
+    width: fit-content;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.4rem;
+    padding: 1.1rem 1.3rem;
+    background: #F3F6FC;
+    border: 1px solid #D9E1F0;
+    border-radius: 8px;
+    color: #21242A;
+
+    &__link {
+        display: block;
+        cursor: zoom-in;
+    }
+
+    &__img {
+        display: block;
+        width: 200px;
+        max-width: 100%;
+        height: auto;
+        background: #fff;
+    }
+
+    &__side {
+        flex: 1;
+        min-width: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        font-size: .8rem;
+    }
+
+    &__hint {
+        color: #667085;
+    }
+}

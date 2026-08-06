@@ -78,7 +78,7 @@ const postcssProdPlugins = [
             '../../../modules/**/out/src/js/**/*.js',
         ],
         safelist: [
-            /^splide/, /^is-/, /^cl-/, /^mode__/, /backdrop/, /grid-view/, /line-view/, /btn-light/
+            /^splide/, /^is-/, /^cl-/, /^mode__/, /backdrop/, /grid-view/, /line-view/, /btn-light/, /^video-container/
         ],
         defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
     })

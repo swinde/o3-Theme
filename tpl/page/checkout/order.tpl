@@ -182,6 +182,9 @@
                         </h3>
 
                         [{block name="order_basket"}]
+                            [{* Per-line EU durability-guarantee labels render inside each basket *}]
+                            [{* row (basketcontents_list.tpl, #219) so multi-product baskets with *}]
+                            [{* different durations each get their own label. *}]
                             [{include file="page/checkout/inc/basketcontents.tpl" editable=false}]
                         [{/block}]
                     </form>

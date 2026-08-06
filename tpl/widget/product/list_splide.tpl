@@ -2,6 +2,7 @@
     [{assign var="type" value="grid"}]
 [{/if}]
 
+
 [{if !$testid }]
     [{assign var=testid value=$oView->getViewParameter('testid')}]
 [{/if}]
@@ -17,25 +18,31 @@
 
         [{* Cap perPage at item count so a short list (e.g. 4 articles) fills the
             full slider width instead of leaving an empty trailing slot. *}]
-        [{assign var="_splideCount" value=$products->count()}]
+        [{assign var="_splideCount" value=$products|@count}]
         <div class="component__productslider-[{$listId}] splide" data-list-id="[{$listId}]" data-splide='[{if $splideConfig}][{$splideConfig}][{else}]{
                                 "mediaQuery": "min",
                                 "perMove":1,
                                 "breakpoints":{
-                                    "1400":{
+                                    [{if $oViewConf->getViewThemeParam('sEnable3xl')}]"1720":{
                                         "perPage":[{if $_splideCount < 5}][{$_splideCount}][{else}]5[{/if}],
+                                        "pagination": false,
+                                        "arrows": true
+                                    },[{/if}]
+                                    "1400":{
+                                        "perPage":[{if $_splideCount < 4}][{$_splideCount}][{else}]4[{/if}],
                                         "pagination": false,
                                         "arrows": true
                                     },
                                     "992":{
-                                        "perPage":[{if $_splideCount < 4}][{$_splideCount}][{else}]4[{/if}]
+                                        "perPage":[{if $_splideCount < 4}][{$_splideCount}][{else}]4[{/if}],
+                                        "arrows": true
                                     },
                                     "768":{
                                         "perPage":[{if $_splideCount < 3}][{$_splideCount}][{else}]3[{/if}]
                                     },
                                     "0":{
                                         "perPage":[{if $_splideCount < 2}][{$_splideCount}][{else}]2[{/if}],
-                                        "arrows": false
+                                        "gap": "1rem"
                                     }
                                 }
                                 }[{/if}]'

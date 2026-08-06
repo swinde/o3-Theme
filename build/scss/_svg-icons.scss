@@ -1,0 +1,245 @@
+// SVG icons and layout features for o3-theme (OOB defaults, no TN-specific tweaks)
+
+.component__tobasket-minus,
+.component__tobasket-plus {
+  color: $primary;
+}
+
+// Page background and accent — OOB defaults (overridable at runtime via inline <style>)
+:root {
+  --page-bg: #FFFFFF;
+  --bs-body-bg: var(--page-bg);
+  --accent-color: #F4F8F9;
+  --footer-bg: #F4F8F9;
+}
+
+// Component-level variables that Bootstrap defines inside their own selector
+.pagination {
+  --bs-pagination-disabled-bg: var(--page-bg);
+  --bs-pagination-hover-bg: var(--page-bg);
+}
+
+// Elements with hardcoded #fff that must be overridden explicitly
+.component__steps-step,
+.splide__arrow,
+.alist__orga-subcats .btn {
+  background-color: var(--page-bg);
+}
+
+// Form floating label mask
+.form-floating > label::after {
+  background-color: var(--page-bg);
+}
+
+// Category nav megamenu: remove rounded corners, match page background
+.megamenu::before {
+  border-radius: 0;
+  background: var(--page-bg);
+}
+
+.megamenu::after {
+  background: var(--page-bg);
+}
+
+// Universal inner margin — adds breathing room between content and the container edge.
+body > header > .container-xxl,
+body > main > .container-xxl {
+  padding-left:  var(--content-inner-margin, 0px);
+  padding-right: var(--content-inner-margin, 0px);
+}
+
+// Bottom breathing room above the footer — all pages except the start page.
+body:not(.cl-start) > main > .container-xxl {
+  padding-bottom: var(--content-inner-margin, 0px);
+}
+
+// Banner and product sliders must stay edge-to-edge.
+.start__promoslider,
+.splide {
+  margin-left:  calc(-1 * var(--content-inner-margin, 0px));
+  margin-right: calc(-1 * var(--content-inner-margin, 0px));
+}
+
+// manufacturers section top padding reset
+.start__manufacturer {
+  padding-top: 1rem;
+  &::before {
+    top: -20px;
+    height: calc(100% + 80px + 20px);
+  }
+}
+
+// Search field: reduce side margins for a wider search area.
+@media (min-width: 768px) {
+  .header__search {
+    margin: 0 15px 0 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__search {
+    margin: 0 45px 0 50px;
+  }
+}
+
+// Header icons: reduce gap between action icons from 10px to 5px.
+@media (min-width: 768px) {
+  .header__actions {
+    gap: 5px;
+  }
+}
+
+// Account label: hide text below xxl so the search box gets more space.
+.header__actions-account span {
+  display: none;
+}
+
+@media (min-width: 1400px) {
+  .header__actions-account span {
+    display: inline-block;
+  }
+}
+
+body.has-bg-image {
+
+  > header > .container-xxl,
+  > main > .container-xxl {
+    max-width: 1320px;
+    background-color: var(--page-bg);
+  }
+
+  > main > .container-xxl {
+    display: flow-root;
+    padding-bottom: 60px;
+  }
+
+  > main {
+    margin-bottom: 0;
+  }
+
+  > header .header__topinfo {
+    margin-left: calc(-1 * var(--content-inner-margin, 0px));
+    margin-right: calc(-1 * var(--content-inner-margin, 0px));
+    padding-left: var(--content-inner-margin, 0px);
+    padding-right: var(--content-inner-margin, 0px);
+  }
+
+  > header .header__topinfo::before {
+    width: 100%;
+    left: 0;
+  }
+
+  &.cl-basket > header {
+    border-bottom: 0;
+    padding-bottom: 0;
+
+    > .container-xxl {
+      border-bottom: 1px solid rgba(17, 34, 17, 0.133333);
+      padding-bottom: 15px;
+    }
+  }
+
+  > header .header__mainnav::after {
+    width: calc(100% + 2 * var(--content-inner-margin, 0px) - 1rem);
+    left: calc(-1 * var(--content-inner-margin, 0px) + 0.5rem);
+  }
+
+  .start__promoslider {
+    margin-top: 0;
+  }
+
+  .start__manufacturer {
+    margin-left: calc(-1 * var(--content-inner-margin, 0px));
+    margin-right: calc(-1 * var(--content-inner-margin, 0px));
+    padding-left: var(--content-inner-margin, 0px);
+    padding-right: var(--content-inner-margin, 0px);
+
+    &::before {
+      display: none;
+    }
+  }
+
+  footer {
+    background-color: transparent;
+
+    .footer__logo {
+      display: none;
+    }
+
+    .footer__legal {
+      border-top: 0;
+    }
+
+    .container-xxl {
+      max-width: 1320px;
+      background-color: var(--footer-bg, #F4F8F9);
+      padding-left:  var(--content-inner-margin, 0px);
+      padding-right: var(--content-inner-margin, 0px);
+    }
+
+    .footer__legal .container-xxl {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left:  var(--content-inner-margin, 0px);
+      padding-right: var(--content-inner-margin, 0px);
+
+      > div:last-child {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+body.xxxl-enabled {
+  @include media-breakpoint-up(xxxl) {
+    // All layout templates use container-xxl; container-xxxl is never used in HTML.
+    .container-xxl {
+      max-width: $xxxl-container-width;
+    }
+  }
+
+  &.has-bg-image {
+    @include media-breakpoint-up(xxxl) {
+      > header > .container-xxl,
+      > main > .container-xxl {
+        max-width: $xxxl-container-width;
+      }
+
+      footer .container-xxl {
+        max-width: $xxxl-container-width;
+      }
+    }
+  }
+}
+
+// topinfo + mainnav always extend edge-to-edge when --content-inner-margin is set
+.header__topinfo,
+.header__mainnav {
+  margin-left:  calc(-1 * var(--content-inner-margin, 0px));
+  margin-right: calc(-1 * var(--content-inner-margin, 0px));
+  padding-left:  var(--content-inner-margin, 0px);
+  padding-right: var(--content-inner-margin, 0px);
+}
+
+// product slider: edge-to-edge
+.component__productslider {
+  padding-left:  var(--content-inner-margin, 0px);
+  padding-right: var(--content-inner-margin, 0px);
+}
+
+// alerts: use accent color
+.alert-info,
+.alert-warning {
+  background-color: var(--accent-color) !important;
+  border-color:     var(--accent-color) !important;
+  color: inherit !important;
+}
+
+// password strength bar
+.component__password-bar ~ .bg-light {
+  background-color: var(--accent-color) !important;
+}
+
+// splide pagination dots
+.splide__pagination__page          { background: var(--accent-color) !important; }
+.splide__pagination__page.is-active { background: #121212 !important; }

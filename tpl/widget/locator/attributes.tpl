@@ -58,7 +58,7 @@
                         <button type="button" class="btn text-primary fw-bold p-0 mb-3" data-js="listing:filter-show-more" data-lang-more="[{oxmultilang ident="MORE"}]" data-lang-less="[{oxmultilang ident="O3_LESS"}]">
                             [{oxmultilang ident="MORE"}]
                             <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.875 4.25L5 6.75L8.125 4.25" stroke="#82BA00" stroke-width="1.5" stroke-linecap="square"/>
+                                <path d="M1.875 4.25L5 6.75L8.125 4.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
                             </svg>
                         </button>
                     [{/if}]

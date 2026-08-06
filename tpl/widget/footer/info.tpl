@@ -1,4 +1,12 @@
 [{block name="footer_information"}]
+    [{oxifcontent ident="oxsecurityinfo" object="_cont"}]
+        <div><a href="[{$_cont->getLink()}]">[{$_cont->oxcontents__oxtitle->value}]</a></div>
+    [{/oxifcontent}]
+    [{oxifcontent ident="oxrightofwithdrawal" object="_cont"}]
+        <div><a href="[{$_cont->getLink()}]">[{$_cont->oxcontents__oxtitle->value}]</a></div>
+    [{/oxifcontent}]
+
+    [{if 0}]
     [{if $oxcmp_shop->oxshops__oxtelefon->value}]
         <div itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
             <meta itemprop="contactType" content="Customer Service">
@@ -7,6 +15,7 @@
             </svg>
             <span itemprop="telephone">[{$oxcmp_shop->oxshops__oxtelefon->value}]</span>
         </div>
+    [{/if}]
     [{/if}]
 
     [{if $oxcmp_shop->oxshops__oxinfoemail->value}]

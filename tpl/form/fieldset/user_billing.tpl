@@ -237,8 +237,7 @@
     [{/if}]
 [{/block}]
 
-[{block name="captcha_form"}]
-[{/block}]
+[{block name="captcha_form"}][{if !$oxcmp_user->oxuser__oxpassword->value && method_exists($oViewConf, 'getCaptchaWidget')}][{$oViewConf->getCaptchaWidget('register')}][{/if}][{/block}]
 
 <p class="alert alert-info">[{oxmultilang ident="COMPLETE_MARKED_FIELDS"}]</p>
 
