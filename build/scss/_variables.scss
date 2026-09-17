@@ -1,1 +1,5 @@
 $topinfo-height: 40px;
+$xxxl-container-width: 1650px !default;
+@if not map-has-key($grid-breakpoints, xxxl) {
+  $grid-breakpoints: map-merge($grid-breakpoints, (xxxl: 1720px)) !global;
+}
