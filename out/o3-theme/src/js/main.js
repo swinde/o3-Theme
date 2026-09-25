@@ -7093,7 +7093,9 @@
   var navExpand = [].slice.call(document.querySelectorAll(".nav-expand"));
   var navBox = document.querySelector("#offcanvas__mainnav .offcanvas-body");
   navExpand.forEach(function(item) {
-    item.querySelector(".nav-link").addEventListener("click", function() {
+    item.querySelector(".nav-expand-link").addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
       nav.classList.add(this.dataset.level);
       navBox.scrollTop = 0;
       return item.classList.add("active");
@@ -7203,65 +7205,70 @@
       }, 500);
     }
   }
-  document.querySelectorAll('[data-js="tobasket"]').forEach(function(basket) {
-    const minusButton = basket.querySelector('[data-js="tobasket-minus"]');
-    const plusButton = basket.querySelector('[data-js="tobasket-plus"]');
-    const inputField = basket.querySelector('[data-js="tobasket-input"]');
-    const form = basket.closest('form[data-js="tobasket-change"]');
-    const warningBox = basket.querySelector('[data-js="stock-warning"]');
-    minusButton.addEventListener("click", function() {
-      modifyValue(inputField, -1);
-      updateButtons(inputField, minusButton, plusButton, warningBox);
-      scheduleSubmit(form);
-    });
-    plusButton.addEventListener("click", function() {
-      modifyValue(inputField, 1);
-      updateButtons(inputField, minusButton, plusButton, warningBox);
-      scheduleSubmit(form);
-    });
-    inputField.addEventListener("input", function() {
-      const rawValue = inputField.value;
-      if (rawValue === "" || rawValue === "." || rawValue === ",") {
-        return;
-      }
-      const normalizedValue = rawValue.replace(",", ".");
-      let value = parseFloat(normalizedValue);
-      const min2 = parseFloat(inputField.getAttribute("min")) || 1;
-      const max2 = parseFloat(inputField.getAttribute("max")) || Infinity;
-      const allowDecimal = inputField.getAttribute("data-allow-decimal") === "true";
-      if (normalizedValue.endsWith(".") || normalizedValue.endsWith(",")) {
-        if (!isNaN(value)) {
-          updateButtons(inputField, minusButton, plusButton, warningBox);
-        }
-        return;
-      }
-      if (isNaN(value)) {
-        value = min2;
-        inputField.value = value;
+  function initTobasket() {
+    document.querySelectorAll('[data-js="tobasket"]:not([data-tobasket-bound])').forEach(function(basket) {
+      basket.setAttribute("data-tobasket-bound", "true");
+      const minusButton = basket.querySelector('[data-js="tobasket-minus"]');
+      const plusButton = basket.querySelector('[data-js="tobasket-plus"]');
+      const inputField = basket.querySelector('[data-js="tobasket-input"]');
+      const form = basket.closest('form[data-js="tobasket-change"]');
+      const warningBox = basket.querySelector('[data-js="stock-warning"]');
+      minusButton.addEventListener("click", function() {
+        modifyValue(inputField, -1);
         updateButtons(inputField, minusButton, plusButton, warningBox);
         scheduleSubmit(form);
-        return;
-      }
-      let needsUpdate = false;
-      if (value < min2) {
-        value = min2;
-        needsUpdate = true;
-      }
-      if (value > max2) {
-        value = max2;
-        needsUpdate = true;
-      }
-      if (!allowDecimal && value !== Math.round(value)) {
-        value = Math.round(value);
-        needsUpdate = true;
-      }
-      if (needsUpdate) {
-        inputField.value = value;
-      }
-      updateButtons(inputField, minusButton, plusButton, warningBox);
-      scheduleSubmit(form);
+      });
+      plusButton.addEventListener("click", function() {
+        modifyValue(inputField, 1);
+        updateButtons(inputField, minusButton, plusButton, warningBox);
+        scheduleSubmit(form);
+      });
+      inputField.addEventListener("input", function() {
+        const rawValue = inputField.value;
+        if (rawValue === "" || rawValue === "." || rawValue === ",") {
+          return;
+        }
+        const normalizedValue = rawValue.replace(",", ".");
+        let value = parseFloat(normalizedValue);
+        const min2 = parseFloat(inputField.getAttribute("min")) || 1;
+        const max2 = parseFloat(inputField.getAttribute("max")) || Infinity;
+        const allowDecimal = inputField.getAttribute("data-allow-decimal") === "true";
+        if (normalizedValue.endsWith(".") || normalizedValue.endsWith(",")) {
+          if (!isNaN(value)) {
+            updateButtons(inputField, minusButton, plusButton, warningBox);
+          }
+          return;
+        }
+        if (isNaN(value)) {
+          value = min2;
+          inputField.value = value;
+          updateButtons(inputField, minusButton, plusButton, warningBox);
+          scheduleSubmit(form);
+          return;
+        }
+        let needsUpdate = false;
+        if (value < min2) {
+          value = min2;
+          needsUpdate = true;
+        }
+        if (value > max2) {
+          value = max2;
+          needsUpdate = true;
+        }
+        if (!allowDecimal && value !== Math.round(value)) {
+          value = Math.round(value);
+          needsUpdate = true;
+        }
+        if (needsUpdate) {
+          inputField.value = value;
+        }
+        updateButtons(inputField, minusButton, plusButton, warningBox);
+        scheduleSubmit(form);
+      });
     });
-  });
+  }
+  window.initTobasket = initTobasket;
+  initTobasket();
 
   // build/js/widget/payment-toggle.js
   document.addEventListener("DOMContentLoaded", function() {

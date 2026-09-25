@@ -27,8 +27,11 @@
                             [{/foreach}]
 
                             <li data-level="is-level-1" class="nav-item[{if $ocat->getSubCats()}] nav-expand[{/if}]">
-                                <a data-level="is-level-1" class="nav-link[{if $ocat->getSubCats()}] nav-expand-link[{/if}][{if $smarty.foreach.root.last}] last[{/if}]" href="[{if $ocat->getSubCats()}]#[{else}][{$ocat->getLink()}][{/if}]" data-title="[{$ocat->oxcategories__oxtitle->value}]">
+                                <a data-level="is-level-1" class="nav-link[{if $smarty.foreach.root.last}] last[{/if}]" href="[{$ocat->getLink()}]" data-title="[{$ocat->oxcategories__oxtitle->value}]">
                                     [{$ocat->oxcategories__oxtitle->value}]
+                                    [{if $ocat->getSubCats()}]
+                                        <span class="nav-expand-link" data-level="is-level-1" role="button" aria-label="[{$ocat->oxcategories__oxtitle->value}]"></span>
+                                    [{/if}]
                                 </a>
 
                                 [{if $ocat->getSubCats()}]
@@ -52,7 +55,12 @@
 
                                                 [{if $osubcat->getIsVisible()}]
                                                     <li data-level="is-level-2" class="nav-item[{if $osubcat->getSubCats()}] nav-expand[{/if}]">
-                                                        <a data-level="is-level-2" class="nav-link[{if $osubcat->getSubCats()}] nav-expand-link[{/if}][{if $smarty.foreach.SubCat.last}] last[{/if}]" href="[{if $osubcat->getSubCats()}]#[{else}][{$osubcat->getLink()}][{/if}]">[{$osubcat->oxcategories__oxtitle->value}]</a>
+                                                        <a data-level="is-level-2" class="nav-link[{if $smarty.foreach.SubCat.last}] last[{/if}]" href="[{$osubcat->getLink()}]">
+                                                            [{$osubcat->oxcategories__oxtitle->value}]
+                                                            [{if $osubcat->getSubCats()}]
+                                                                <span class="nav-expand-link" data-level="is-level-2" role="button" aria-label="[{$osubcat->oxcategories__oxtitle->value}]"></span>
+                                                            [{/if}]
+                                                        </a>
 
                                                         [{if $osubcat->getSubCats()}]
                                                             <ul data-level="is-level-3" class="nav-items nav-expand-content">

@@ -45,8 +45,9 @@
         display: flex;
         align-items: center;
         border-bottom: 1px solid #EAEFF0;
-        padding: 0;
+        padding: 0 49px 0 0;
         min-height: 49px;
+        position: relative;
 
         &.last {
             border: none;
@@ -94,8 +95,17 @@
     }
 
     .nav-expand-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 49px;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1;
+        padding: 0;
 
         &:after {
             content: '';

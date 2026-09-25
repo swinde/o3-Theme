@@ -96,10 +96,12 @@
                 [{block name="dd_layout_page_header_icon_menu_minibasket_functions"}]
                     <div class="offcanvas__basket-navigation">
                         <a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=basket"}]" class="btn btn-outline-primary btn-lg">[{oxmultilang ident="DISPLAY_BASKET"}]</a>
-                        [{if $oxcmp_user}]
-                            <a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=payment"}]" class="btn btn-primary btn-lg">[{oxmultilang ident="CHECKOUT"}]</a>
-                        [{else}]
-                            <a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=user"}]" class="btn btn-primary btn-lg">[{oxmultilang ident="CHECKOUT"}]</a>
+                        [{if !$oxcmp_basket->isBelowMinOrderPrice()}]
+                            [{if $oxcmp_user}]
+                                <a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=payment"}]" class="btn btn-primary btn-lg">[{oxmultilang ident="CHECKOUT"}]</a>
+                            [{else}]
+                                <a href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=user"}]" class="btn btn-primary btn-lg">[{oxmultilang ident="CHECKOUT"}]</a>
+                            [{/if}]
                         [{/if}]
                     </div>
                 [{/block}]

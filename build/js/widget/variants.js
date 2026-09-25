@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Event-Listener erneut binden
                 initVariantSelects();
 
+                // Tobasket-Listener erneut binden (fuer +/- Buttons)
+                if (typeof window.initTobasket === 'function') {
+                    window.initTobasket();
+                }
+
                 // Bilderslider neu initialisieren, wenn Thumbnails vorhanden sind
                 if (document.querySelector('.details__picture-thumbnails')) {
                     initPictureSlider();
