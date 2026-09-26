@@ -557,6 +557,22 @@
 
 [{block name="email_html_order_cust_orderemailend"}]
     <p>[{oxcontent ident="oxuserorderemailend"}]</p>
+    [{* EU legal-guarantee notice (Reg. (EU) 2025/1960 Annex I) - shop-global fixed artwork, issue #219. *}]
+    [{* Always rendered in the footer, never behind a click (see tpl/widget/footer/services.tpl). *}]
+    [{* The CMS snippet below is strictly supplementary and must never gate the image. *}]
+    [{if method_exists($oViewConf, 'getGuaranteeNoticeUrl')}]
+    [{assign var="sGuaranteeNoticeUrl" value=$oViewConf->getGuaranteeNoticeUrl()}]
+    [{if $sGuaranteeNoticeUrl}]
+    <div style="margin:8px 0;">
+        <img src="[{$sGuaranteeNoticeUrl}]" alt="[{oxmultilang ident="O3_GUARANTEE_NOTICE_IMG_ALT"}]" width="220" style="width:220px;max-width:100%;height:auto;border:0;">
+        [{oxifcontent ident="o3_guarantee_notice_info" object="oGuaranteeCont"}]
+        <div style="margin:8px 0;font-size:12px;">
+            <div>[{$oGuaranteeCont->oxcontents__oxcontent->value}]</div>
+        </div>
+        [{/oxifcontent}]
+    </div>
+    [{/if}]
+    [{/if}]
 [{/block}]
 
 [{include file="email/html/footer.tpl"}]
