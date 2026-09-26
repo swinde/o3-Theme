@@ -251,7 +251,7 @@
 
 [{block name="email_plain_order_cust_orderemailend"}]
 [{oxcontent ident="oxuserorderemailendplain"}]
-[{if method_exists($oViewConf, 'getGuaranteeNottGuaranteeNoticeUrl()}]
+[{if method_exists($oViewConf, 'getGuaranteeNottGuaranteeNoticeUrl()')}]
 
 [{oxmultilang ident="O3_GUARANTEE_NOTICE_IMG_AL"}]
 [{oxifcontent ident="o3_guarantee_notice_info" object="oGuaranteeCont"}]
